@@ -15,6 +15,8 @@ import java.util.stream.IntStream;
 @Component
 public class DatabaseLoader implements ApplicationRunner {
 	private final PostRepository postRepository;
+	private final AuthorRepository authorRepository;
+	
     private final String[] templates = {
             "Smart Home %s", "Mobile %s - For When You're On he Go", "The %s - Your New Favorite Accessory"};
     private final String[] gadgets = {
@@ -23,8 +25,9 @@ public class DatabaseLoader implements ApplicationRunner {
     public List<Author> authors = new ArrayList<>();
 
     @Autowired
-    public DatabaseLoader(PostRepository postRepository) {
+    public DatabaseLoader(PostRepository postRepository, AuthorRepository authorRepository) {
     	this.postRepository = postRepository;
+    	this.authorRepository = authorRepository;
     }
 
     @Override

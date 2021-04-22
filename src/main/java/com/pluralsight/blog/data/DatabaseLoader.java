@@ -52,8 +52,9 @@ public class DatabaseLoader implements ApplicationRunner {
             randomPosts.add(post);
             
             Author author = authors.get(i % authors.size());
-            author.addPost(post);  
-            authors.set(i % authors.size(),author);
+            post.setAuthor(author);
+            author.addPost(post);
+            //authors.set(i % authors.size(),author);
         });
         
         //save 40 semi-ramdom blog posts data

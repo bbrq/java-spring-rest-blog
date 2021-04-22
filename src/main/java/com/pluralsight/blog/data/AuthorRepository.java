@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.pluralsight.blog.model.Author;
 
-@Component
+//@Component
 //can't browse the authors at all except to be displayed within a Post
 //check by localhost:8080
 

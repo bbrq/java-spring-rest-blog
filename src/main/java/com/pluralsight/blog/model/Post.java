@@ -31,6 +31,16 @@ public class Post {
     //This time, HTTP/1.1 304 Not Modified since the ETag is still 0.
     @Version 
     private Long version;
+    /*
+     in the terminal, run 
+     curl -i -X POST -H "Content-Type:application/json" -d '{"title" : "This is the title", "body" : "This is the body."}' http://localhost:8080/api/v1/posts 
+     We can see we get HTTP/1.1 201 Created since the Post was created successfully.
+
+     But if we instead put in a blank title in the following command: 
+     curl -i -X POST -H "Content-Type:application/json" -d '{"title" : "", "body" : "This is the body."}' http://localhost:8080/api/v1/posts 
+     We will get HTTP/1.1 500 Internal Server Error since Spring throws a validation exception.
+     * */
+    @NotNull @Size(min = 4, max = 100)
     private String title;
     @Column(length=1000000)
     @Lob

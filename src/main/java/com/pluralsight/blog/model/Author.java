@@ -2,6 +2,8 @@ package com.pluralsight.blog.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.Hibernate;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -16,6 +18,10 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    //curl -H "Accept: application/json" -i http://localhost:8080/authors/1
+    //but can't see it now, because the annotation  @RepositoryRestResource(exported = false)
+    // on public interface AuthorRepository extends JpaRepository<Author, Long> 
+    private Long version;
     private String firstname;
     private String lastname;
     @JsonIgnore

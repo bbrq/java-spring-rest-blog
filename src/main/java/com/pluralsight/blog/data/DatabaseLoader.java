@@ -38,7 +38,7 @@ public class DatabaseLoader implements ApplicationRunner {
 	        new Author("efisher", "Eric",  "Fisher", "password"),
 	        new Author("csouza", "Carlos",  "Souza", "password")
 		));
-    	//authorRepository.saveAll(authors);
+    	authorRepository.saveAll(authors);
     	
     	//generate 40 semi-ramdom blog posts data
         IntStream.range(0,40).forEach(i->{        	
@@ -52,7 +52,8 @@ public class DatabaseLoader implements ApplicationRunner {
             randomPosts.add(post);
             
             Author author = authors.get(i % authors.size());
-            author.addPost(post);            
+            author.addPost(post);  
+            authors.set(i % authors.size(),author);
         });
         
         //save 40 semi-ramdom blog posts data

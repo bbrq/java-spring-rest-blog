@@ -21,6 +21,7 @@ public class Author {
     //curl -H "Accept: application/json" -i http://localhost:8080/authors/1
     //but can't see it now, because the annotation  @RepositoryRestResource(exported = false)
     // on public interface AuthorRepository extends JpaRepository<Author, Long> 
+    @Version 
     private Long version;
     private String firstname;
     private String lastname;
